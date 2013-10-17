@@ -1,0 +1,36 @@
+{
+  "name": "wsdl-service",
+  "description": "The service can generate WSDL file and organize on the basis of his service SOAP",
+  "version": "0.1.0",
+  "author": {
+    "name": "Andrey Dergaev", 
+    "email": "lenfer.spb@gmail.com"
+  },
+  "main": "lib/service.js",
+  "keywords": [
+    "SOAP",
+    " WSDL",
+    "Service",
+    "XMLShema"
+  ],
+  "dependencies": {
+    "libxmljs": "0.8.1",
+    "moment": "2.1.0",
+    "xml2json": "0.3.2"
+  },
+  "bugs": {
+    "web": "https://github.com/Lenfer/wsdl-service/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Lenfer/wsdl-service"
+  },
+  "licenses": [
+    {
+      "name": "MIT",
+      "url": "https://github.com/Lenfer/wsdl-service/blob/master/LICENSE"
+    }
+  ],
+  "homepage": "https://github.com/Lenfer/wsdl-service", 
+  "readmeFilename": "README.md"
+}
