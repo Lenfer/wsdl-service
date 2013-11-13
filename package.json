@@ -6,7 +6,7 @@
     "name": "Andrey Dergaev", 
     "email": "lenfer.spb@gmail.com"
   },
-  "main": "lib/service.js",
+  "main": "lib/WSDLService.js",
   "keywords": [
     "SOAP",
     " WSDL",
