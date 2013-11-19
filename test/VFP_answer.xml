@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<SOAP-ENV:Envelope 
+	xmlns:SOAPSDK1="http://www.w3.org/2001/XMLSchema" 
+	xmlns:SOAPSDK2="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:SOAPSDK3="http://schemas.xmlsoap.org/soap/encoding/" 
+	xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+<SOAP-ENV:Body>
+	<loginRequest xmlns="http://soap.ndm51.ru:3000/ram">
+		<userLogin trololo:haha="asdasdasd" xmlns:SOAPSDK4="http://soap.ndm51.ru:3000/ram">lenfer</userLogin>
+		<userPass xmlns:SOAPSDK5="http://soap.ndm51.ru:3000/ram">lenfer</userPass>
+		<userType xmlns:SOAPSDK6="http://soap.ndm51.ru:3000/ram">53</userType>
+		<applicationId xmlns:SOAPSDK7="http://soap.ndm51.ru:3000/ram">1</applicationId>
+		<applicationKey xmlns:SOAPSDK8="http://soap.ndm51.ru:3000/ram">D3F368BF3B3DA799039EA5AE6B7D66A54F099320</applicationKey>
+		<innerObject>
+			<userLogin trololo:haha="asdasdasd" xmlns:SOAPSDK4="http://soap.ndm51.ru:3000/ram">lenfer</userLogin>
+			<userPass xmlns:SOAPSDK5="http://soap.ndm51.ru:3000/ram">lenfer</userPass>
+			<userType xmlns:SOAPSDK6="http://soap.ndm51.ru:3000/ram">53</userType>
+			<applicationId xmlns:SOAPSDK7="http://soap.ndm51.ru:3000/ram">1</applicationId>
+		</innerObject>
+	</loginRequest>
+</SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
