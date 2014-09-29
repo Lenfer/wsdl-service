@@ -1,15 +1,20 @@
 ﻿
-var wsdlService = require('wsdl-service')
+var wsdlService = require('./..')
 
 
 // Define SOAP service
 var SOAP = new wsdlService({
-	name: 'shedule-service', 
-	url: 'http://localhost/test-service/'
+	name: 'testService'
 })
 
 // =================================================
 // getStartTime
+SOAP.element({
+    name: 'getStartTimeIn', 
+    sequence:{
+        startTime: {type: 'dateTime'}
+    }
+})
 SOAP.element({
     name: 'getStartTimeOut', 
     sequence:{
@@ -18,18 +23,19 @@ SOAP.element({
 })
 SOAP.port({
     name: 'getStartTime', 
-    info: 'Возвращает время запуска сервиса', 
+    info: 'Datetime callback', 
+    input: 'getStartTimeIn', 
     output: 'getStartTimeOut', 
     exec: function(req, next){
-        next(false, {startTime: Schedule.stats().startTime})
+        console.log(req)
+        next(false, {startTime: req.startTime})
     }
 })
 
 
 // =================================================
-// getIgnoreScheduleList
 SOAP.complexType({
-    name: 'getIgnoreScheduleListOutElement', 
+    name: 'listElementTp', 
     sequence:{
         idShedule: {type: 'integer'}, 
         idToch: {type: 'integer'}, 
@@ -38,22 +44,48 @@ SOAP.complexType({
     }
 })
 SOAP.element({
-    name: 'getIgnoreScheduleListOut', 
+    name: 'listTp', 
     sequence:{
-        getIgnoreScheduleListOutElement: {
-            type: 'getIgnoreScheduleListOutElement', 
+        getListOutElement: {
+            type: 'listElementTp', 
             minOccurs: 0,
             maxOccurs: 'unbounded'
         }
     }
 })
 SOAP.port({
-    name: 'getIgnoreScheduleList', 
-    info: 'Возвращает список проигнорированных заданий по расписанию, за текущий день', 
-    output: 'getIgnoreScheduleListOut', 
+    name: 'getList', 
+    info: 'List callback', 
+    output: 'listTp', 
     exec: function(req, next){
-        next(false, {
-            getIgnoreScheduleListOutElement: Schedule.ignoredSсheduleList()            
-        })
+        next(false, {getListOutElement: [
+            {idShedule: 100, idToch: 200, nameShedule: 'test1', time: '10:10:15'},
+            {idShedule: 101, idToch: 201, nameShedule: 'test2', time: '10:10:16'},
+            {idShedule: 102, idToch: 202, nameShedule: 'test3', time: '10:10:18'},
+        ]})
     }
 })
+
+
+SOAP.port({
+    name: 'getError', 
+    info: 'Error callback', 
+    output: 'getStartTimeOut', 
+    exec: function(req, next){
+        next(new Error('Oops! It\'s error!'), null)
+    }
+})
+
+
+var bind = SOAP.bind()
+    , url = require('url');
+
+require('http')
+    .createServer(function(req, res){
+        var url_parts = url.parse(req.url, true)
+        req.query = url_parts.query
+        bind(req, res)
+    })
+    .listen(8080, function(){
+        console.log('Server start.')
+    })
