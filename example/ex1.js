@@ -89,3 +89,5 @@ require('http')
     .listen(8080, function(){
         console.log('Server start.')
     })
+
+// get wsdl description http://localhost:8080?wsdl
